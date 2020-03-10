@@ -1,4 +1,6 @@
 {
     "mongoURI": "mongodb+srv://lee:1234@cluster0-erm0v.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret": "masteroftheuniverse"
+    "jwtSecret": "masteroftheuniverse",
+    "githubClientId": "16f7baef2467d40d219c",
+    "githubSecret": "58b6d531c0a191d91ee627c47e665c01e9302440"
 }
