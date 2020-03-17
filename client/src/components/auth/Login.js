@@ -18,13 +18,13 @@ const Login = ({ login, isAuthenticated }) => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    login({ email, password })
+    login({ email, password });
   };
 
   // Redirect if logged in
   if (isAuthenticated) {
     return <Redirect to='/dashboard' />
-  }
+  };
 
   return (
     <Fragment>
@@ -60,13 +60,13 @@ const Login = ({ login, isAuthenticated }) => {
   )
 }
 
-  Login.propTypes = {
+  Login.propsTypes = {
     login: PropTypes.bool.isRequired,
-    isAuthenicated: PropTypes.bool
+    isAuthenticated: PropTypes.bool
   }
 
 const mapStateToProps = state => ({
-  isAuthenicated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(mapStateToProps, { login })(Login);
