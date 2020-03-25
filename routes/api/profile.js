@@ -7,6 +7,7 @@ const { check, validationResult } = require('express-validator');
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const Post = require('../../models/Post')
 
 // @route    GEt api/profile/me
 // @desc     Get current users profile
@@ -56,7 +57,7 @@ router.post(
       location,
       bio,
       status,
-      githubsername,
+      githubusername,
       skills,
       youtube,
       facebook,
@@ -73,7 +74,7 @@ router.post(
     if (location) profileFields.location = location;
     if (bio) profileFields.bio = bio;
     if (status) profileFields.status = status;
-    if (githubsername) profileFields.githubsername = githubsername;
+    if (githubusername) profileFields.githubusername = githubusername;
     if (skills) {
       profileFields.skills = skills.split(',').map(skill => skill.trim());
     }
@@ -149,8 +150,8 @@ router.get('/user/:user_id', async (req, res) => {
 // @access   Pravite
 router.delete('/', auth, async (req, res) => {
   try {
-    // @todo - remove users posts
-
+    // Remove users posts
+    await Post.deleteMany({ user: req.user.id });
     // Remove Profile
     await Profile.findOneAndRemove({ user: req.user.id });
 
