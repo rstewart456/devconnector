@@ -1,5 +1,5 @@
 node_modules/
-config/default.json
-config/production.json
+# config/default.json
+# config/production.json
 config/default copy.json
 config/production copy.json
